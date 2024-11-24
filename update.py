@@ -1,7 +1,6 @@
 from logging import FileHandler, StreamHandler, INFO, basicConfig, error as log_error, info as log_info
 from os import path as ospath, environ, remove
-from subprocess import run as srun, call as scall
-from pkg_resources import working_set
+from subprocess import run as srun
 from requests import get as rget
 from dotenv import load_dotenv, dotenv_values
 from pymongo import MongoClient
@@ -49,21 +48,15 @@ if DATABASE_URL is not None:
             and config_dict is not None:
         environ['UPSTREAM_REPO'] = config_dict['UPSTREAM_REPO']
         environ['UPSTREAM_BRANCH'] = config_dict['UPSTREAM_BRANCH']
-        environ['UPGRADE_PACKAGES'] = config_dict.get('UPDATE_PACKAGES', 'False')
     conn.close()
 
-UPGRADE_PACKAGES = environ.get('UPGRADE_PACKAGES', 'False') 
-if UPGRADE_PACKAGES.lower() == 'true':
-    packages = [dist.project_name for dist in working_set]
-    scall("pip install " + ' '.join(packages), shell=True)
-
-UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/HarixTGX/WZML')
+UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/HarixTGX/WZMLxHK')
 if len(UPSTREAM_REPO) == 0:
-    UPSTREAM_REPO = "https://github.com/HarixTGX/WZML"
+    UPSTREAM_REPO = 'https://github.com/HarixTGX/WZMLxHK'
 
-UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
+UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'update')
 if len(UPSTREAM_BRANCH) == 0:
-    UPSTREAM_BRANCH = "update"
+    UPSTREAM_BRANCH = 'update'
 
 if UPSTREAM_REPO is not None:
     if ospath.exists('.git'):
@@ -82,6 +75,7 @@ if UPSTREAM_REPO is not None:
     UPSTREAM_REPO = f"https://github.com/{repo[-2]}/{repo[-1]}"
     if update.returncode == 0:
         log_info('Successfully updated with latest commits !!')
+        log_info(f'OMG UPSTREAM_REPO: {UPSTREAM_REPO} | OMG UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
     else:
-        log_error('Something went Wrong ! Retry or Ask Support !')
-    log_info(f'OMG UPSTREAM_REPO: {UPSTREAM_REPO} | OMG UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
+        log_error('Something went Wrong !!')
+        log_error(f'OMG UPSTREAM_REPO: {UPSTREAM_REPO} | OMG UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
