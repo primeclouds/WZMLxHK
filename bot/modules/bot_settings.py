@@ -38,14 +38,14 @@ default_values = {'AUTO_DELETE_MESSAGE_DURATION': 30,
                   'RSS_DELAY': 600,
                   'STATUS_UPDATE_INTERVAL': 10,
                   'SEARCH_LIMIT': 0,
-                  'UPSTREAM_BRANCH': 'master',
+                  'UPSTREAM_BRANCH': 'update',
                   'BOT_THEME': 'minimal',
                   'BOT_LANG': 'en',
                   'IMG_PAGE': 1,
-                  'AUTHOR_NAME': 'WZML-X',
-                  'AUTHOR_URL': 'https://t.me/WZML_X',
-                  'TITLE_NAME': 'WZ Mirror/Leech X',
-                  'GD_INFO': 'Uploaded by WZML-X',
+                  'AUTHOR_NAME': 'OMGXCLOUD',
+                  'AUTHOR_URL': 'https://t.me/OMGxCloud',
+                  'TITLE_NAME': 'OMG Mirror/Leech',
+                  'GD_INFO': 'Uploaded by OMG X CLOUD',
                   }
 bool_vars = ['AS_DOCUMENT', 'BOT_PM', 'STOP_DUPLICATE', 'SET_COMMANDS', 'SAVE_MSG', 'SHOW_MEDIAINFO', 'SOURCE_LINK', 'SAFE_MODE', 'SHOW_EXTRA_CMDS',
              'IS_TEAM_DRIVE', 'USE_SERVICE_ACCOUNTS', 'WEB_PINCODE', 'EQUAL_SPLITS', 'DISABLE_DRIVE_LINK', 'DELETE_LINKS', 'CLEAN_LOG_MSG', 'USER_TD_MODE', 
@@ -163,7 +163,7 @@ async def load_config():
 
     CAP_FONT = environ.get('CAP_FONT', '').lower()
     if CAP_FONT.strip() not in ['', 'b', 'i', 'u', 's', 'spoiler', 'code']:
-        CAP_FONT = 'code'
+        CAP_FONT = 'b'
         
     LEECH_FILENAME_PREFIX = environ.get('LEECH_FILENAME_PREFIX', '')
     if len(LEECH_FILENAME_PREFIX) == 0:
@@ -348,16 +348,16 @@ async def load_config():
     else:
         await create_subprocess_shell(f"gunicorn web.wserver:app --bind 0.0.0.0:{BASE_URL_PORT} --worker-class gevent")
 
-    UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
+    UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/HarixTGX/WZMLxHK')
     if len(UPSTREAM_REPO) == 0:
-        UPSTREAM_REPO = ''
+        UPSTREAM_REPO = 'https://github.com/HarixTGX/WZMLxHK'
         
     UPGRADE_PACKAGES = environ.get('UPGRADE_PACKAGES', '')
     UPGRADE_PACKAGES = UPGRADE_PACKAGES.lower() == 'true'
 
-    UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
+    UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'update')
     if len(UPSTREAM_BRANCH) == 0:
-        UPSTREAM_BRANCH = 'master'
+        UPSTREAM_BRANCH = 'update'
 
     STORAGE_THRESHOLD = environ.get('STORAGE_THRESHOLD', '')
     STORAGE_THRESHOLD = '' if len(
@@ -412,7 +412,7 @@ async def load_config():
     PLAYLIST_LIMIT = environ.get('PLAYLIST_LIMIT', '')
     PLAYLIST_LIMIT = '' if len(PLAYLIST_LIMIT) == 0 else int(PLAYLIST_LIMIT)
 
-    BOT_PM = environ.get('BOT_PM', '')
+    BOT_PM = environ.get('BOT_PM', 'True')
     BOT_PM = BOT_PM.lower() == 'true'
 
     DAILY_TASK_LIMIT = environ.get('DAILY_TASK_LIMIT', '')
@@ -442,28 +442,28 @@ async def load_config():
 
     AUTHOR_NAME = environ.get('AUTHOR_NAME', '')
     if len(AUTHOR_NAME) == 0:
-        AUTHOR_NAME = 'WZML-X'
+        AUTHOR_NAME = 'OMGXCLOUD'
 
     AUTHOR_URL = environ.get('AUTHOR_URL', '')
     if len(AUTHOR_URL) == 0:
-        AUTHOR_URL = 'https://t.me/WZML_X'
+        AUTHOR_URL = 'https://t.me/OMGxCloud'
 
     TITLE_NAME = environ.get('TITLE_NAME', '')
     if len(TITLE_NAME) == 0:
-        TITLE_NAME = 'WeebZone-X'
+        TITLE_NAME = 'OMG X CLOUD'
         
     COVER_IMAGE = environ.get('COVER_IMAGE', '')
     if len(COVER_IMAGE) == 0:
-        COVER_IMAGE = 'https://graph.org/file/60f9f8bcb97d27f76f5c0.jpg'
+        COVER_IMAGE = 'https://envs.sh/K5r.jpg'
 
     GD_INFO = environ.get('GD_INFO', '')
     if len(GD_INFO) == 0:
-        GD_INFO = 'Uploaded by WZML-X'
+        GD_INFO = 'Uploaded by OMGXCLOUD'
 
     SAVE_MSG = environ.get('SAVE_MSG', '')
     SAVE_MSG = SAVE_MSG.lower() == 'true'
 
-    SET_COMMANDS = environ.get('SET_COMMANDS', '')
+    SET_COMMANDS = environ.get('SET_COMMANDS', 'True')
     SET_COMMANDS = SET_COMMANDS.lower() == 'true'
     
     SAFE_MODE = environ.get('SAFE_MODE', '')
