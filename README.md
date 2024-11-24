@@ -8,7 +8,7 @@
 > Make sure git is Installed in your system or quick run `apt-get install git pip curl -y`
 
 ```shell
-git clone https://gitlab.com/mysterysd.sd/WZML-X && cd WZML-X 
+git clone https://github.com/HarixTGX/WZMLxHK && cd WZMLxHK 
 ```
 
 **Step 2 :** Now Install Heroku in your Sytem or checkout Official Heroku Deploy Docs, or Download via `apt-get` or `npm`
@@ -77,7 +77,7 @@ nano config.env
   TELEGRAM_HASH = ""
   OWNER_ID = ""
   UPSTREAM_REPO = ""
-  UPSTREAM_BRANCH = "hk_wzmlx"
+  UPSTREAM_BRANCH = "update"
   DATABASE_URL = ""
   BASE_URL = ""
   TORRENT_TIMEOUT = "0"
@@ -102,7 +102,7 @@ heroku git:remote -a APP_NAME
 **Step 7 :** Now push to Heroku via git forcefully to build.
 
 ```shell
-git push heroku main -f
+git push heroku heroku -f
 ```
 
 **Heroku Logs:** When checking Logs, Use this will give Complete Logs.
