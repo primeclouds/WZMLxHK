@@ -50,13 +50,13 @@ if DATABASE_URL is not None:
         environ['UPSTREAM_BRANCH'] = config_dict['UPSTREAM_BRANCH']
     conn.close()
 
-UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
+UPSTREAM_REPO = environ.get('UPSTREAM_REPO', 'https://github.com/HarixTGX/WZMLxHK')
 if len(UPSTREAM_REPO) == 0:
-    UPSTREAM_REPO = None
+    UPSTREAM_REPO = 'https://github.com/HarixTGX/WZMLxHK'
 
-UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
+UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', 'update')
 if len(UPSTREAM_BRANCH) == 0:
-    UPSTREAM_BRANCH = 'master'
+    UPSTREAM_BRANCH = 'update'
 
 if UPSTREAM_REPO is not None:
     if ospath.exists('.git'):
@@ -75,7 +75,7 @@ if UPSTREAM_REPO is not None:
     UPSTREAM_REPO = f"https://github.com/{repo[-2]}/{repo[-1]}"
     if update.returncode == 0:
         log_info('Successfully updated with latest commits !!')
-        log_info(f'UPSTREAM_REPO: {UPSTREAM_REPO} | UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
+        log_info(f'OMG UPSTREAM_REPO: {UPSTREAM_REPO} | OMG UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
     else:
         log_error('Something went Wrong !!')
-        log_error(f'UPSTREAM_REPO: {UPSTREAM_REPO} | UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
+        log_error(f'OMG UPSTREAM_REPO: {UPSTREAM_REPO} | OMG UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
