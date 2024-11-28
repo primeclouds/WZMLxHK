@@ -39,7 +39,7 @@ speedtest-cli
 telegraph
 tenacity
 tgcrypto
-uv
 uvloop
+uv
 xattr
-yt-dlp
+yt-dlp==2023.10.13
